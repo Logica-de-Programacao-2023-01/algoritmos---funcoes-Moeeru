@@ -41,7 +41,7 @@ import (
 	"strings"
 )
 
-func somalista(x []int) (int, error) {
+func medialista(x []int) (int, error) {
 	if len(x) == 0 {
 		return 0, fmt.Errorf("lista vazia")
 	} else {
@@ -78,14 +78,11 @@ func main() {
 			}
 		}
 	}
-	resultado, err := somalista(x)
+	resultado, err := medialista(x)
 	if err != nil {
-		fmt.Printf("Ocorreu um erro ao dividir x e y: %s\n", err)
-
-		return
+		fmt.Print(err)
 	}
-
-	fmt.Print("O resultado da divisão é ", resultado)
+	fmt.Printf("A média da lista %d é %d ",x, resultado)
 }
 
 #Exercicio 3
