@@ -51,7 +51,7 @@ func medialista(x []int) (int, error) {
 			contador++
 			soma += x[i]
 		}
-		return soma / contador, nil
+		return len(x), nil
 	}
 }
 
@@ -60,10 +60,7 @@ func main() {
 	elemento := 0
 	começo := ""
 	for true {
-		fmt.Print("Digite um valor: ")
-		fmt.Scan(&elemento)
-		x = append(x, elemento)
-		fmt.Print("Deseja continuar? [S/N] ")
+		fmt.Print("Deseja começar? [S/N] ")
 		fmt.Scan(&começo)
 		if strings.ToUpper(começo) != "S" && strings.ToUpper(começo) != "N" {
 			fmt.Println("Resposta inválida")
@@ -72,17 +69,22 @@ func main() {
 			if strings.ToUpper(começo) == "N" {
 				break
 			}
+		} else if strings.ToUpper(começo) == "N" {
+			break
 		} else {
-			if strings.ToUpper(começo) == "N" {
-				break
-			}
+			fmt.Print("Digite um valor: ")
+			fmt.Scan(&elemento)
+			x = append(x, elemento)
+			fmt.Print("Deseja continuar? [S/N] ")
+			fmt.Scan(&começo)
 		}
 	}
 	resultado, err := medialista(x)
 	if err != nil {
 		fmt.Print(err)
+	} else {
+		fmt.Printf("A média da lista %d é %d ", x, resultado)
 	}
-	fmt.Printf("A média da lista %d é %d ",x, resultado)
 }
 
 #Exercicio 3
